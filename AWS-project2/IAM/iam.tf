@@ -26,7 +26,7 @@ resource "aws_iam_group_membership" "dev_group" {
   name                  = "dev-group-members"
   users = [
       aws_iam_user.talant.name
-      aws_iam.user.junai.name
+      aws_iam_user.junai.name
   ]
 }
 
