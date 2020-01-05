@@ -17,10 +17,34 @@ resource "aws_iam_user" "junai" {
   }
 }
 
+resource "aws_iam_user" "aibek" {
+  name                  = "aibek"
+  path                  = "/"
+  tags = {
+    name  = "aibek"
+    env  = "qa"
+  }
+}
+
+
 resource "aws_iam_group" "developers" {
     name                = "developers"
     path                = "/"
 }
+
+resource "aws_iam_group" "netadmins" {
+  name                  = "netadmins"
+  path                  = "/"
+}
+
+resource "aws_iam_group_membership" "netadmins_group" {
+  name                  = "net-admins-group"
+  users = [
+    aws_iam_user.aibek.name
+  ]
+  group = aws_iam_group.netadmins.name
+}
+
 
 resource "aws_iam_group_membership" "dev_group" {
   name                  = "dev-group-members"
