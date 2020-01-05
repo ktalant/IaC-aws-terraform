@@ -1,7 +1,7 @@
 terraform {
     backend "s3" {
         bucket              = "talant-terraform-backend"
-        key                 = "env"
+        key                 = "aws/iam/infrastructure"
         region              = "us-east-1"
     }
 }
