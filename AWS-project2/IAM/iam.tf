@@ -28,6 +28,7 @@ resource "aws_iam_group_membership" "dev_group" {
       aws_iam_user.talant.name,
       aws_iam_user.junai.name
   ]
+  group = aws_iam_group.developers.name
 }
 
 
