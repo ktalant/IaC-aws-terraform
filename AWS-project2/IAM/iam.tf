@@ -54,9 +54,10 @@ resource "aws_iam_group_membership" "dev_group" {
   ]
   group = aws_iam_group.developers.name
 }
-resource "aws_iam_policy" "policy" {
-  name        = "test-policy"
-  description = "A test policy"
+
+resource "aws_iam_policy" "ec2_admin" {
+  name        = "ec2_admin"
+  description = "ec2 admin policy"
 
   policy = <<EOF
   {
