@@ -61,46 +61,46 @@ resource "aws_iam_policy" "ec2_admin" {
 
   policy = <<EOF
   {
-      "Version": "2012-10-17",
+    "Version": "2012-10-17",
       "Statement": [
-          {
-              "Action": "ec2:*",
+        {
+            "Action": "ec2:*",
               "Effect": "Allow",
               "Resource": "*"
-          },
+            },
           {
-              "Effect": "Allow",
+            "Effect": "Allow",
               "Action": "elasticloadbalancing:*",
               "Resource": "*"
-          },
+            },
           {
-              "Effect": "Allow",
+            "Effect": "Allow",
               "Action": "cloudwatch:*",
               "Resource": "*"
-          },
+            },
           {
-              "Effect": "Allow",
+            "Effect": "Allow",
               "Action": "autoscaling:*",
               "Resource": "*"
-          },
+            },
           {
-              "Effect": "Allow",
+            "Effect": "Allow",
               "Action": "iam:CreateServiceLinkedRole",
               "Resource": "*",
               "Condition": {
-                  "StringEquals": {
-                      "iam:AWSServiceName": [
-                          "autoscaling.amazonaws.com",
-                          "ec2scheduled.amazonaws.com",
-                          "elasticloadbalancing.amazonaws.com",
-                          "spot.amazonaws.com",
-                          "spotfleet.amazonaws.com",
-                          "transitgateway.amazonaws.com"
-                      ]
-                  }
-              }
-          }
-      ]
-  }
+                 "StringEquals": {
+                 "iam:AWSServiceName": [
+                 "autoscaling.amazonaws.com",
+                 "ec2scheduled.amazonaws.com",
+                 "elasticloadbalancing.amazonaws.com",
+                 "spot.amazonaws.com",
+                 "spotfleet.amazonaws.com",
+                 "transitgateway.amazonaws.com"
+                        ]
+                    }
+                }
+            }
+        ]
+    }
 EOF
 }
