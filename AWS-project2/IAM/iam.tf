@@ -56,9 +56,8 @@ resource "aws_iam_group_membership" "dev_group" {
 }
 
 resource "aws_iam_policy" "ec2_admin" {
-  name        = "ec2_admin"
+  name = "ec2_admin"
   description = "ec2 admin policy"
-
   policy = <<EOF
   {
     "Version": "2012-10-17",
