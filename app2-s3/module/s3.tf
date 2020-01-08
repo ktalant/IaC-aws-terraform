@@ -5,4 +5,11 @@ resource "random_id" "app2_bucket_id" {
 resource "aws_s3_bucket" "app3_storage" {
   bucket                    = "${var.app2_bucket_name}-${random_id.app2_bucket_id.dec}"
   acl                       = "private"
+
+  force_destroy             = true
+
+  tags = {
+    Name  =  var.app2_bucket_name
+    env   = "dev"
+  }
 }
