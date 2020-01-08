@@ -1,6 +1,6 @@
 resource "aws_key_pair" "new_dev_key" {
     key_name      = "devkey"
-    public_key    = "~/.ssh/id_rsa.pub"
+    public_key    = file("~/.ssh/id_rsa.pub")
 
 }
 
