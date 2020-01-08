@@ -1,14 +1,8 @@
-resource "random_id" "bucket_id" {
-  byte_length           = 4
+provider "aws" {
+  region            = var.aws_region
 }
 
-resource "aws_s3_bucket" "app1_bucket" {
-  bucket                    = "${var.project_name}-${random_id.bucket_id.dec}"
-  acl                       = "private"
-  force_destroy             = true
-
-  tags = {
-      Name  = "app1-bucket"
-  }
+module "storage1" {
+  source            = "./storage"
+  project_name      = var.project_name
 }
-
