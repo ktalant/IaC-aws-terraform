@@ -9,6 +9,8 @@ resource "aws_instance" "app1_ec2" {
   instance_type = var.ec2_type
   key_name      = aws_key_pair.new_dev_key.key_name
 
+  vpc_id        = var.app1_vpc_id
+
 
   tags = {
     Name = "app1"
