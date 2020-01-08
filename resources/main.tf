@@ -1,10 +1,9 @@
 
-module "app1_vpc_module" {
-  source = "./vpc"
+module "app1_instance" {
+  source = "./instance"
 
-  vpc_cidr              = "172.16.0.0/16"
-  az1_cidr              = "172.16.0.0/24"
-  az1                   = "us-east-2"
+  ec2_ami   = "ami-00068cd7555f543d5"
+  ec2_type  = "t2.medium"
 }
 
 
