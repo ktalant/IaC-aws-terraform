@@ -6,7 +6,7 @@ provider "aws" {
 module "bucket1" {
   source = "./modules"
 
-  bucket_name       = "talant-bucket-2020"
+  bucket_name       = "azhar-jasmine-meeriem-samara-2020"
 }
 
 
