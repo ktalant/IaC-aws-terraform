@@ -1,4 +1,4 @@
-resource "aws_key_pair" "dev_key" {
+resource "aws_key_pair" "new_dev_key" {
     key_name      = "devkey"
     public_key    = "~/.ssh/id_rsa.pub"
 
