@@ -1,4 +1,8 @@
 
+provider "aws" {
+  region            = "us-east-1"
+}
+
 module "app1_vpc_module" {
   source = "./modules"
 
