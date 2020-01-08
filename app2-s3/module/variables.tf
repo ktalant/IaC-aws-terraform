@@ -1,1 +1,1 @@
-variable "app3_bucket_name" {}
+variable "app2_bucket_name" {}

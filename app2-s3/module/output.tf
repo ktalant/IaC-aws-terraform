@@ -1,3 +1,3 @@
 output "app3-bucket" {
-  value = var.app3_bucket_name
+  value = var.app2_bucket_name
 }
