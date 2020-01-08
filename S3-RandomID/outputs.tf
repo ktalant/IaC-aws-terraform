@@ -1,3 +1,3 @@
 output "bucketname" {
-  value = module.app1_bucket.bucketname
+  value = module.storage1.bucketname
 }
