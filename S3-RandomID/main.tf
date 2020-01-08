@@ -4,5 +4,6 @@ provider "aws" {
 
 module "storage1" {
   source            = "./storage"
-  project_name      = var.project_name
+  project_name1      = var.project_name1
+  project_name2      = var.project_name2
 }

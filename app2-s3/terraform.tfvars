@@ -1,0 +1,1 @@
+app2_s3_bucket      = "talant-new-app2-2012"
