@@ -75,7 +75,7 @@ resource "aws_route_table" "public_route" {
   vpc_id = var.vpc_id
 
   route {
-    cidr_block = [var.public1_cidr, var.public2_cidr, var.public3_cidr]
+    cidr_block = [aws_subnet.public_sub1.cidr_block, aws_subnet.public_sub2.cidr_block, aws_subnet.public_sub3.cidr_block]
   }
   }
 
