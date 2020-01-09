@@ -6,6 +6,7 @@ data "aws_vpc" "my_vpc" {
   id = var.vpc_id
 }
 
+# ------------------Public-subnet---------------------
 resource "aws_subnet" "public_sub1" {
   vpc_id                    = data.aws_vpc.my_vpc.id
   availability_zone         = var.az1
@@ -38,6 +39,7 @@ resource "aws_subnet" "public_sub3" {
   }
 }
 
+# ------------------Private-subnet---------------------
 resource "aws_subnet" "private_sub1" {
   vpc_id                    = data.aws_vpc.my_vpc.id
   availability_zone         = var.az4
@@ -68,5 +70,11 @@ resource "aws_subnet" "private_sub3" {
   }
 }
 
+# ------------------Route-table---------------------
+resource "aws_route_table" "public_route" {
+  vpc_id = "${aws_vpc.default.id}"
 
+  route {
+    cidr_block = [aws_subnet.public1_sub.cidr_block, aws_subnet.public1_sub.cidr_block, aws_subnet.public1_sub.cidr_block]
+  }
 
