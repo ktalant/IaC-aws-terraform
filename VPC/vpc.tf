@@ -77,4 +77,5 @@ resource "aws_route_table" "public_route" {
   route {
     cidr_block = [aws_subnet.public1_sub.cidr_block, aws_subnet.public1_sub.cidr_block, aws_subnet.public1_sub.cidr_block]
   }
+  }
 
