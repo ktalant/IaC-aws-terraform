@@ -1,3 +1,3 @@
 output "bucketname" {
-  value = var.storage_name
+  value = var.storage_name-random_id.storage_id.dec
 }
