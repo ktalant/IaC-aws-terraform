@@ -1,4 +1,8 @@
 vpc_id              = "vpc-09b8cae09c845e5b5"
 az1                 = "us-east-1a"
+az2                 = "us-east-1b"
+az3                 = "us-east-1c"
 public1_cidr        = "10.0.1.0/24"
+public2_cidr        = "10.0.2.0/24"
+public3_cidr        = "10.0.3.0/24"
 aws_region          = "us-east-1"
