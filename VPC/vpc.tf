@@ -7,6 +7,10 @@ resource "aws_subnet" "public_sub1" {
   availability_zone         = var.az1
   cidr_block                = var.public1_cidr
   map_public_ip_on_launch   = true
+
+  tags = {
+      Name                  = "public1"
+  }
 }
 
 
