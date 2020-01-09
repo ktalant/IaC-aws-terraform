@@ -38,4 +38,38 @@ resource "aws_subnet" "public_sub3" {
   }
 }
 
+resource "aws_subnet" "private_sub1" {
+  vpc_id                    = data.aws_vpc.my_vpc.id
+  availability_zone         = var.az4
+  cidr_block                = var.private1_cidr
+  map_public_ip_on_launch   = true
+
+  tags = {
+      Name                  = "private1"
+  }
+}
+
+resource "aws_subnet" "private_sub2" {
+  vpc_id                    = data.aws_vpc.my_vpc.id
+  availability_zone         = var.az5
+  cidr_block                = var.private2_cidr
+  map_public_ip_on_launch   = true
+
+  tags = {
+      Name                  = "private2"
+  }
+}
+
+resource "aws_subnet" "private_sub3" {
+  vpc_id                    = data.aws_vpc.my_vpc.id
+  availability_zone         = var.az6
+  cidr_block                = var.private3_cidr
+  map_public_ip_on_launch   = true
+
+  tags = {
+      Name                  = "private3"
+  }
+}
+
+
 

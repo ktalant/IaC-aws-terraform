@@ -17,6 +17,19 @@ output "public3" {
   value = aws_subnet.public_sub3.cidr_block
 }
 
+output "private1" {
+  value = aws_subnet.private_sub1.cidr_block
+}
+
+output "private2" {
+  value = aws_subnet.private_sub2.cidr_block
+}
+
+output "private3" {
+  value = aws_subnet.private_sub3.cidr_block
+}
+
+
 output "aws-region" {
   value = var.aws_region
 }
