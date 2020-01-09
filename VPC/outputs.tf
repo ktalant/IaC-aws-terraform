@@ -9,3 +9,8 @@ output "public1" {
   value = aws_subnet.public_sub1.cidr_block
 }
 
+output "aws-region" {
+  value = var.aws_region
+}
+
+
