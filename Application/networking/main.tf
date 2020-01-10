@@ -24,7 +24,7 @@ resource "aws_security_group" "ssh-sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = var.accessip
+    cidr_blocks = [var.accessip]
   }
 
   # HTTP
@@ -32,7 +32,7 @@ resource "aws_security_group" "ssh-sg" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = var.accessip
+    cidr_blocks = [var.accessip]
   }
 
   egress {
