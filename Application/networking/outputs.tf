@@ -1,5 +1,5 @@
 output "vpcname" {
-  value = aws_vpc.wp_vpc
+  value = aws_vpc.wp_vpc.tags.Name
 }
 output "vpccidrblock" {
   value = aws_vpc.wp_vpc.cidr_block
