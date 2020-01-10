@@ -3,6 +3,7 @@ data "aws_availability_zones" "availability" {}
 resource "aws_vpc" "wp_vpc" {
   enable_dns_hostnames      = true
   enable_dns_support        = true
+  cidr_block                = var.wp_vpc_cidr
 
   tags  = {
       Name                  = "wp-vpc"
@@ -13,7 +14,7 @@ resource "aws_vpc" "wp_vpc" {
 resource "aws_security_group" "ssh-sg" {
   name        = "allow_ssh"
   description = "Allow port 22"
-  vpc_id      = "${aws_vpc.main.id}"
+  vpc_id      = aws_vpc.wp_vpc.id
 
   # SSH
   ingress {
