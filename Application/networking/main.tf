@@ -2,6 +2,8 @@ provider "aws" {
   region                = var.aws_region
 }
 
+data "aws_availability_zones" "wp_azs" {}
+
 
 resource "aws_vpc" "wp_vpc" {
   enable_dns_hostnames      = true
@@ -41,6 +43,17 @@ resource "aws_default_route_table" "wp_private_rt" {
   }
 }
 
+resource "aws_subnet" "wp_public_subnet" {
+  count                     = 2
+  vpc_id                    = aws_vpc.wp_vpc.id
+  cidr_block                = var.public_cidrs[count.index]
+  map_public_ip_on_launch   = true
+  availability_zone         = data.aws_availability_zones.wp_azs.names[count.index]
+
+  tags = {
+      Name = "wp-public-${count.index + 1}"
+  }
+}
 
 
 
