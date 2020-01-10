@@ -33,6 +33,15 @@ resource "aws_route_table" "wp_public_rt" {
   }
 }
 
+resource "aws_default_route_table" "wp_private_rt" {
+  default_route_table_id    = aws_vpc.wp_vpc.default_route_table_id
+
+  tags = {
+      Name = "wp-private-RT"
+  }
+}
+
+
 
 
 
