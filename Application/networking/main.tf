@@ -2,7 +2,6 @@ provider "aws" {
   region                = var.aws_region
 }
 
-data "aws_availability_zones" "availability" {}
 
 resource "aws_vpc" "wp_vpc" {
   enable_dns_hostnames      = true
