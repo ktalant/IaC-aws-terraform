@@ -44,7 +44,7 @@ resource "aws_default_route_table" "wp_private_rt" {
 }
 
 resource "aws_subnet" "wp_public_subnet" {
-  count                     = 2
+  count                     = 3
   vpc_id                    = aws_vpc.wp_vpc.id
   cidr_block                = var.public_cidrs[count.index]
   map_public_ip_on_launch   = true
