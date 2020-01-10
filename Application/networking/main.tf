@@ -13,6 +13,25 @@ resource "aws_vpc" "wp_vpc" {
   }
 }
 
+resource "aws_internet_gateway" "wp_igw" {
+  vpc_id                    = aws_vpc.wp_vpc.id
+
+  tags = {
+      Name  = "wp-IGW"
+  }
+}
+
+resource "aws_route_table" "wp_public_rt" {
+  vpc_id                    = aws_vpc.wp_vpc.id
+
+  route {
+      cidr_block            = "0.0.0.0/0"
+      gateway_id            = aws_internet_gateway.wp_igw.id
+  }
+}
+
+
+
 
 resource "aws_security_group" "ssh-sg" {
   name        = "allow_ssh"
