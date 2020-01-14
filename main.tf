@@ -6,3 +6,8 @@ module "iam" {
   source = "./IAM"
 }
 
+module "vpc" {
+  source = "./VPC"
+}
+
+
