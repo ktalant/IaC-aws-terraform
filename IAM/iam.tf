@@ -1,19 +1,19 @@
-resource "aws_iam_user" "talant" {
-  name = "talant"
+resource "aws_iam_user" "ulan" {
+  name = "ulan"
   path = "/"
 
   tags = {
-    Name = "talant-user"
+    Name = "ulan-user"
   }
 }
 
-resource "aws_iam_access_key" "talant_accesskey" {
-  user = aws_iam_user.talant.name
+resource "aws_iam_access_key" "ulan_accesskey" {
+  user = aws_iam_user.ulan.name
 }
 
-resource "aws_iam_user_policy" "talant_ro" {
-  name = "talant-ec-2ro"
-  user = aws_iam_user.talant.name
+resource "aws_iam_user_policy" "ulan_ro" {
+  name = "ulan-ec-2ro"
+  user = aws_iam_user.ulan.name
 
   policy = <<EOF
 {
