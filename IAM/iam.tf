@@ -30,3 +30,18 @@ resource "aws_iam_user_policy" "ulan_ro" {
 }
 EOF
 }
+
+resource "aws_iam_group" "developers" {
+  name = "developers"
+  path = "/"
+}
+
+resource "aws_iam_group_membership" "team" {
+  name = "team"
+
+  users = [
+    aws_iam_user.ulan.name
+  ]
+
+  group = aws_iam_group.developers.name
+}
