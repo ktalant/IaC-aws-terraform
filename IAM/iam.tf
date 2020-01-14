@@ -8,12 +8,12 @@ resource "aws_iam_user" "talant" {
 }
 
 resource "aws_iam_access_key" "talant_accesskey" {
-  user = "${aws_iam_user.talant.name}"
+  user = aws_iam_user.talant.name
 }
 
 resource "aws_iam_user_policy" "talant_ro" {
   name = "talant-ec-2ro"
-  user = "${aws_iam_user.talant.name}"
+  user = aws_iam_user.talant.name
 
   policy = <<EOF
 {
