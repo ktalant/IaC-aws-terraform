@@ -7,7 +7,7 @@ output "userkey" {
 }
 
 output "userpolicy" {
-  value = aws_iam_user_policy.talant-ro.policy
+  value = aws_iam_user_policy.talant_ro.policy
 }
 
 
