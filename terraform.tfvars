@@ -1,1 +1,0 @@
-my_region               = "us-west-2"
