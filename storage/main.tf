@@ -12,7 +12,7 @@ resource "random_id" "bucket_id" {
 
 resource "aws_s3_bucket" "talant_bucket" {
   count         = length(var.bucket_name)
-  bucket        = "${element(var.bucket_name, count.index)}-${random_id.bucket_id.dec}"
+  bucket        = "${element(var.bucket_name, count.index)}-${var.aws_region}-${random_id.bucket_id.dec}"
   acl           = "private"
   force_destroy = "true"
 
