@@ -17,6 +17,6 @@ resource "aws_s3_bucket" "talant_bucket" {
   force_destroy = "true"
 
   tags = {
-    Name = "${element(var.s3_bucket_name, count.index)}"
+    Name = "${element(var.bucket_name, count.index)}"
   }
 }
