@@ -14,7 +14,7 @@ resource "aws_s3_bucket" "my_storage" {
 
     force_destroy =  true
 
-    tags {
+    tags = {
       Name = var.bucket_name
     }
 }
