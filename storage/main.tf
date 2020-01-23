@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 # Generate random numbers for buckets
-provider "random_id" "bucket_id" {
+resource "random_id" "bucket_id" {
   byte_length       = 4
 }
 
