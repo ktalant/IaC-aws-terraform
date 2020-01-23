@@ -11,7 +11,7 @@ resource "random_id" "bucket_id" {
 # Create the bucket
 
 resource "aws_s3_bucket" "talant_bucket" {
-  count         = "${length(var.bucket_name)}"
+  count         = length(var.bucket_name)
   bucket        = "${element(var.bucket_name, count.index)}-${random_id.bucket_id.dec}"
   acl           = "private"
   force_destroy = "true"
