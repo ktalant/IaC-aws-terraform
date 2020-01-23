@@ -1,11 +1,6 @@
+# Define region
 provider "aws" {
-  type = "list"
-  count = "${length(var.aws_region)}"
-  region = "${element(var.aws_region, count.index)}"
-}
-
-variable "aws_region" {
-  type    = "list"
+  region = var.aws_region
 }
 
 # Generate random numbers for buckets
@@ -14,10 +9,6 @@ resource "random_id" "bucket_id" {
 }
 
 # Create the bucket
-
-variable "s3_bucket_name" {
-  type    = "list"
-}
 
 resource "aws_s3_bucket" "talant_bucket" {
   count         = "${length(var.bucket_name)}"
