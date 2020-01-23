@@ -1,3 +1,3 @@
 output "bucketnames-useast1" {
-  value = module.storage-useast1.bucketname
+  value = module.storage-east1.bucketname
 }
