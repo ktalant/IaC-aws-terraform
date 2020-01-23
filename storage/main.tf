@@ -1,5 +1,11 @@
 provider "aws" {
-  region = var.aws_region
+  type = "list"
+  count = "${length(var.aws_region)}"
+  region = "${element(var.aws_region, count.index)}"
+}
+
+variable "aws_region" {
+  type    = "list"
 }
 
 # Generate random numbers for buckets
@@ -8,13 +14,18 @@ resource "random_id" "bucket_id" {
 }
 
 # Create the bucket
-resource "aws_s3_bucket" "my_storage" {
-    bucket        = "${var.bucket_name}-${random_id.bucket_id.dec}"
-    acl           = "private"
 
-    force_destroy =  true
+variable "s3_bucket_name" {
+  type    = "list"
+}
 
-    tags = {
-      Name = var.bucket_name
-    }
+resource "aws_s3_bucket" "talant_bucket" {
+  count         = "${length(var.s3_bucket_name)}"
+  bucket        = "${element(var.s3_bucket_name, count.index)}-${random_id.bucket_id.dec}"
+  acl           = "private"
+  force_destroy = "true"
+
+  tags = {
+    Name = "${element(var.s3_bucket_name, count.index)}"
+  }
 }
