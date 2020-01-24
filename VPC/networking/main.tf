@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "us-east-1"
+}
+
 data "aws_availability_zones" "azs" {}
 
 resource "aws_vpc" "talant_vpc" {
