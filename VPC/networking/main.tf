@@ -1,6 +1,5 @@
 provider "aws" {
   region = "us-east-1"
-  profile = "developer"
 }
 
 data "aws_availability_zones" "azs" {}
