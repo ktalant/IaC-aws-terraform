@@ -9,7 +9,7 @@ resource "aws_vpc" "talant_vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
 
-  tags {
+  tags = {
     Name = var.vpc_tag
   }
 }
