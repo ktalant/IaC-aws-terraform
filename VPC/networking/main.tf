@@ -21,3 +21,16 @@ resource "aws_internet_gateway" "talant_igw" {
     Name = var.igw_tag
   }
 }
+
+resource "aws_route_table" "talant_public_rt" {
+  vpc_id = aws_vpc.talant_vpc.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.talant_igw.id
+  }
+
+  tags {
+    Name = var.public_rt
+  }
+}
