@@ -17,7 +17,7 @@ resource "aws_vpc" "talant_vpc" {
 resource "aws_internet_gateway" "talant_igw" {
   vpc_id = aws_vpc.talant_vpc.id
 
-  tags {
+  tags = {
     Name = var.igw_tag
   }
 }
