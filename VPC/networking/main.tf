@@ -1,9 +1,12 @@
+# Define provider
 provider "aws" {
   region = var.aws_region
 }
 
+# fetch availability zones
 data "aws_availability_zones" "azs" {}
 
+# create a new VPC
 resource "aws_vpc" "talant_vpc" {
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
@@ -14,6 +17,7 @@ resource "aws_vpc" "talant_vpc" {
   }
 }
 
+# create a new IGW and attach to created VPC
 resource "aws_internet_gateway" "talant_igw" {
   vpc_id = aws_vpc.talant_vpc.id
 
@@ -22,6 +26,7 @@ resource "aws_internet_gateway" "talant_igw" {
   }
 }
 
+# create a new public route table and attach internet gateway
 resource "aws_route_table" "talant_public_rt" {
   vpc_id = aws_vpc.talant_vpc.id
 
@@ -30,7 +35,7 @@ resource "aws_route_table" "talant_public_rt" {
     gateway_id = aws_internet_gateway.talant_igw.id
   }
 
-  tags {
-    Name = var.public_rt
+  tags = {
+    Name = var.public_rt_tag
   }
 }
