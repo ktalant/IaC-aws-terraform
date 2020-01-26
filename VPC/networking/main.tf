@@ -40,10 +40,24 @@ resource "aws_route_table" "talant_public_rt" {
   }
 }
 
+# Default route table has been assigned as private route table
 resource "aws_default_route_table" "talant_private_rt" {
   default_route_table_id  = aws_vpc.talant_vpc.default_route_table_id
 
   tags = {
     Name = var.private_rt_tag
+  }
+}
+
+# Public subnet in 3 AZs
+resource "aws_subnet" "talant_public_subnet" {
+  count                   = 3
+  vpc_id                  = aws_vpc.talant_vpc.id
+  cidr_block              = var.public_cidrs[count.index]
+  map_public_ip_on_launch = true
+  availability_zone       = data.aws_availability_zones.available.names[count.index]
+
+  tags = {
+    Name = "${var.public_subnet_tag}_${count.index + 1}"
   }
 }
