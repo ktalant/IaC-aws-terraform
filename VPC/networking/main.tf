@@ -13,3 +13,11 @@ resource "aws_vpc" "talant_vpc" {
     Name = var.vpc_tag
   }
 }
+
+resource "aws_internet_gateway" "talant_igw" {
+  vpc_id = aws_vpc.talant_vpc.id
+
+  tags {
+    Name = var.igw_tag
+  }
+}
