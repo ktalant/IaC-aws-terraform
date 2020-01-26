@@ -39,3 +39,11 @@ resource "aws_route_table" "talant_public_rt" {
     Name = var.public_rt_tag
   }
 }
+
+resource "aws_default_route_table" "talant_private_rt" {
+  default_route_table_id  = aws_vpc.talant_vpc.default_route_table_id
+
+  tags = {
+    Name = var.private_rt_tag
+  }
+}
