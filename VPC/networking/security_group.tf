@@ -3,7 +3,7 @@ resource "aws_security_group" "talant_public_sg" {
   description = "Used for ssh and http"
   vpc_id      = aws_vpc.talant_vpc.id
 
-  tag = {
+  tags = {
     Name = "talant-SG-ssh-http"
   }
   #SSH
