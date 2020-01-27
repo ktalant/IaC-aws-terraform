@@ -3,6 +3,9 @@ resource "aws_security_group" "talant_public_sg" {
   description = "Used for ssh and http"
   vpc_id      = aws_vpc.talant_vpc.id
 
+  tag = {
+    Name = "talant-SG-ssh-http"
+  }
   #SSH
   ingress {
     from_port   = 22
