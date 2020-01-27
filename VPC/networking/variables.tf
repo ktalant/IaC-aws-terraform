@@ -7,4 +7,6 @@ variable "public_cidrs" {
 variable "private_cidrs" {
   type = list
 }
-variable "accessip" {}
+variable "accessip" {
+  type = list
+}
