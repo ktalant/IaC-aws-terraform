@@ -1,9 +1,9 @@
 # ----- speficy region here
-aws_region = "us-east-1"
+aws_region = "us-west-1"
 
 #-----specify cidr block for VPC  and tag VPC here
 vpc_cidr = "192.168.0.0/16"
-vpc_tag = "talant-VPC"
+vpc_tag = "west-VPC"
 
 
 #-----speficy public and private subnet cidrs here
