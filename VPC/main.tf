@@ -5,7 +5,7 @@ provider "aws" {
 module "vpc-paris" {
   source        = "./networking"
   vpc_cidr      = var.vpc_cidr
-  count         = var.subnet_count
+  subnet_count  = var.subnet_count
   aws_region    = var.aws_region
   vpc_tag       = var.vpc_tag
   public_cidrs  = var.public_cidrs

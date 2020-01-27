@@ -51,7 +51,7 @@ resource "aws_default_route_table" "talant_private_rt" {
 
 # Public subnet in 3 AZs
 resource "aws_subnet" "talant_public_subnet" {
-  count                   = var.count
+  count                   = var.subnet_count
   vpc_id                  = aws_vpc.talant_vpc.id
   cidr_block              = var.public_cidrs[count.index]
   map_public_ip_on_launch = true
