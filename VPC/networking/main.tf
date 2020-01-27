@@ -61,3 +61,9 @@ resource "aws_subnet" "talant_public_subnet" {
     Name = "${var.public_subnet_tag}_${count.index + 1}"
   }
 }
+
+resource "aws_route_table_association" "talant_public_assoc" {
+  count          = aws_subnet.talant_public_subnet.count
+  subnet_id      = aws_subnet.talant_public_subnet.*.id[count.index]
+  route_table_id = aws_route_table.talant_public_rt.id
+}
