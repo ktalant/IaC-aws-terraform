@@ -22,7 +22,7 @@ resource "aws_internet_gateway" "talant_igw" {
   vpc_id = aws_vpc.talant_vpc.id
 
   tags = {
-    Name = var.igw_tag
+    Name = "talant-IGW"
   }
 }
 
@@ -36,7 +36,7 @@ resource "aws_route_table" "talant_public_rt" {
   }
 
   tags = {
-    Name = var.public_rt_tag
+    Name = "talant-public-RT"
   }
 }
 
@@ -45,7 +45,7 @@ resource "aws_default_route_table" "talant_private_rt" {
   default_route_table_id  = aws_vpc.talant_vpc.default_route_table_id
 
   tags = {
-    Name = var.private_rt_tag
+    Name = "talant-private-RT"
   }
 }
 
@@ -58,12 +58,26 @@ resource "aws_subnet" "talant_public_subnet" {
   availability_zone       = data.aws_availability_zones.azs.names[count.index]
 
   tags = {
-    Name = "${var.public_subnet_tag}_${count.index + 1}"
+    Name = "talant-public-subnet_${count.index + 1}"
   }
 }
 
+# Public subnet association to public route table
 resource "aws_route_table_association" "talant_public_assoc" {
   count          = length(aws_subnet.talant_public_subnet)
   subnet_id      = aws_subnet.talant_public_subnet.*.id[count.index]
   route_table_id = aws_route_table.talant_public_rt.id
+}
+
+# Private  subnet in 3 AZs
+resource "aws_subnet" "talant_private_subnet" {
+  count                   = 3
+  vpc_id                  = aws_vpc.talant_vpc.id
+  cidr_block              = var.private_cidrs[count.index]
+  map_public_ip_on_launch = true
+  availability_zone       = data.aws_availability_zones.azs.names[count.index]
+
+  tags = {
+    Name = "talant-private-subnet_${count.index + 1}"
+  }
 }
