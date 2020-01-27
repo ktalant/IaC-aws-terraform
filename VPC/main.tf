@@ -9,4 +9,5 @@ module "vpc-paris" {
   vpc_tag       = var.vpc_tag
   public_cidrs  = var.public_cidrs
   private_cidrs = var.private_cidrs
+  accessip      = var.accessip 
 }
