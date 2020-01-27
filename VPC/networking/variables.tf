@@ -10,3 +10,4 @@ variable "private_cidrs" {
 variable "accessip" {
   type = list
 }
+variable "count" {}

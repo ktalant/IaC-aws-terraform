@@ -1,5 +1,6 @@
 # ----- speficy region here
-aws_region = "us-west-1"
+aws_region = "eu-west-3"
+subnet_count = 2
 
 #-----specify cidr block for VPC  and tag VPC here
 vpc_cidr = "192.168.0.0/16"
