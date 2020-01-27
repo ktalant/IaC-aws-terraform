@@ -1,4 +1,12 @@
-variable "useast1" {}
-variable "useast2" {}
-variable "uswest1" {}
-variable "bucket_name" {}
+variable "vpc_cidr" {}
+variable "vpc_tag" {}
+variable "aws_region" {}
+variable "public_cidrs" {
+  type = list
+}
+variable "private_cidrs" {
+  type = list
+}
+variable "accessip" {
+  type = list
+}

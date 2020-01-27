@@ -1,11 +1,11 @@
-output "bucketnames-useast1" {
-  value = module.storage-east1.bucketname
+output "paris-public-subnets" {
+  value = module.vpc-paris.public-subnets
 }
 
-output "bucketnames-useast2" {
-  value = module.storage-east2.bucketname
+output "paris-private-subnets" {
+  value = module.vpc-paris.private-subnets
 }
 
-output "bucketnames-west1" {
-  value = module.storage-west1.bucketname
+output "paris-SG-id" {
+  value = module.vpc-paris.security-group
 }
