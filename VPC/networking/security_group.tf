@@ -1,4 +1,4 @@
-resource "aws_security_group" "talant_public_sg" {
+resource "aws_security_group" "talant_sg" {
   name        = "talant_SG"
   description = "Used for ssh and http"
   vpc_id      = aws_vpc.talant_vpc.id
