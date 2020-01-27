@@ -55,7 +55,7 @@ resource "aws_subnet" "talant_public_subnet" {
   vpc_id                  = aws_vpc.talant_vpc.id
   cidr_block              = var.public_cidrs[count.index]
   map_public_ip_on_launch = true
-  availability_zone       = data.aws_availability_zones.available.names[count.index]
+  availability_zone       = data.aws_availability_zones.azs.names[count.index]
 
   tags = {
     Name = "${var.public_subnet_tag}_${count.index + 1}"
