@@ -7,5 +7,5 @@ output "private-subnets" {
 }
 
 output "security-group" {
-  value = aws_security_group.talant_sg.name 
+  value = aws_security_group.talant_sg_new.name 
 }
