@@ -1,11 +1,11 @@
-output "paris-public-subnets" {
-  value = module.vpc-paris.public-subnets
+output "talant-public-subnets" {
+  value = module.vpc-talant.public-subnets
 }
 
-output "paris-private-subnets" {
-  value = module.vpc-paris.private-subnets
+output "talant-private-subnets" {
+  value = module.vpc-talant.private-subnets
 }
 
-output "paris-SG-id" {
-  value = module.vpc-paris.security-group
+output "talant-SG-id" {
+  value = module.vpc-talant.security-group
 }
