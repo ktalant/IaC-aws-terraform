@@ -6,6 +6,25 @@ resource "aws_key_pair" "talant_keypair" {
     key_name = "talant-key"
     public_key = file(var.key_path)
 }
+
+data "aws_ami" "example" {
+  owners           = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["Lava Centos 7 Base "]
+  }
+
+  filter {
+    name   = "root-device-type"
+    values = ["ebs"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+}
 # resource "aws_instance" "talant_vm" {
 #     instance_type = var.instance_type
 #     ami = var.ami_id
