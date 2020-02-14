@@ -4,7 +4,12 @@ provider "aws" {
 }
 
 # fetch availability zones
-data "aws_availability_zones" "available" {}
+data "aws_availability_zones" "available" {
+
+  depends_on = [
+   aws_vpc.talant_vpc
+ ]
+}
 
 # create a new VPC
 resource "aws_vpc" "talant_vpc" {
@@ -15,6 +20,7 @@ resource "aws_vpc" "talant_vpc" {
   tags = {
     Name = var.vpc_tag
   }
+
 }
 
 # create a new IGW and attach to created VPC
