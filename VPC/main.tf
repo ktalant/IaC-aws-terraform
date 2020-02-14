@@ -1,8 +1,9 @@
 provider "aws" {
   region = "us-east-1"
+  profile = "jasmine"
 }
 
-module "vpc-paris" {
+module "vpc-talant" {
   source        = "./networking"
   vpc_cidr      = var.vpc_cidr
   subnet_count  = var.subnet_count

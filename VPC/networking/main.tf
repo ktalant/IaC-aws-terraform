@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 # fetch availability zones
-data "aws_availability_zones" "azs" {}
+data "aws_availability_zones" "available" {}
 
 # create a new VPC
 resource "aws_vpc" "talant_vpc" {
@@ -49,13 +49,13 @@ resource "aws_default_route_table" "talant_private_rt" {
   }
 }
 
-# Public subnet in 3 AZs
+# Public subnet in 3 available
 resource "aws_subnet" "talant_public_subnet" {
   count                   = var.subnet_count
   vpc_id                  = aws_vpc.talant_vpc.id
   cidr_block              = var.public_cidrs[count.index]
   map_public_ip_on_launch = true
-  availability_zone       = data.aws_availability_zones.azs.names[count.index]
+  availability_zone       = data.aws_availability_zones.available.names[count.index]
 
   tags = {
     Name = "talant-public-subnet_${count.index + 1}"
@@ -69,13 +69,13 @@ resource "aws_route_table_association" "talant_public_assoc" {
   route_table_id = aws_route_table.talant_public_rt.id
 }
 
-# Private  subnet in 3 AZs
+# Private  subnet in 3 available
 resource "aws_subnet" "talant_private_subnet" {
   count                   = 3
   vpc_id                  = aws_vpc.talant_vpc.id
   cidr_block              = var.private_cidrs[count.index]
   map_public_ip_on_launch = true
-  availability_zone       = data.aws_availability_zones.azs.names[count.index]
+  availability_zone       = data.aws_availability_zones.available.names[count.index]
 
   tags = {
     Name = "talant-private-subnet_${count.index + 1}"
