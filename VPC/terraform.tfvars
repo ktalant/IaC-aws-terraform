@@ -1,5 +1,6 @@
 # ----- speficy region here
 aws_region = "us-east-1"
+aws_profile = "jasmine"
 subnet_count = 3
 
 #-----specify cidr block for VPC  and tag VPC here

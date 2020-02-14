@@ -11,3 +11,4 @@ variable "accessip" {
   type = list
 }
 variable "subnet_count" {}
+variable "aws_profile" {}
