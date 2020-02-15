@@ -8,11 +8,12 @@ resource "aws_key_pair" "talant_keypair" {
 }
 
 data "aws_ami" "example" {
+  most_recent = true
   owners           = ["amazon"]
 
   filter {
     name   = "name"
-    values = ["Lava Centos 7 Base "]
+    values = ["amzn-ami-hvm*"]
   }
 
   filter {
