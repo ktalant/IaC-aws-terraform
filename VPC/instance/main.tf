@@ -29,6 +29,7 @@ data "aws_ami" "talant_ami" {
 resource "aws_instance" "talant_vm" {
     instance_type = var.instance_type
     ami = data.aws_ami.talant_ami.id
+    associate_public_ip_address = true
 
     tags = {
       Name = "talant-vm"
