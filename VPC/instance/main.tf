@@ -26,6 +26,7 @@ data "aws_ami" "talant_ami" {
     values = ["hvm"]
   }
 }
+
 resource "aws_instance" "talant_vm" {
     instance_type = var.instance_type
     ami = data.aws_ami.talant_ami.id
@@ -35,18 +36,24 @@ resource "aws_instance" "talant_vm" {
       source = "script.sh"
       destination = "/tmp/script.sh"
       connection {
-    type          = "ssh"
-    user          = "ec2-user"
-    password      = ""
-    private_key   = var.private_key
-  }
-}
+        type          = "ssh"
+        user          = "ec2-user"
+        password      = ""
+        private_key   = var.private_key
+      }
     }
+
     provisioner "remote-exec" {
       inline = [
         "chmod +x /tmp/script.sh",
         "/tmp/script.sh args"
       ]
+      connection {
+        type          = "ssh"
+        user          = "ec2-user"
+        password      = ""
+        private_key   = var.private_key
+      }
     }
 
     tags = {
