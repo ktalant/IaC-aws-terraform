@@ -7,5 +7,5 @@ output "talant-private-subnets" {
 }
 
 output "talant-SG-id" {
-  value = module.vpc-talant.security-group.id
+  value = module.vpc-talant.security-group
 }

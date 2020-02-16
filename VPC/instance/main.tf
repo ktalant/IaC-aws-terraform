@@ -34,6 +34,7 @@ resource "aws_instance" "talant_vm" {
     tags = {
       Name = "talant-vm"
     }
+
     key_name = aws_key_pair.talant_keypair.id
     vpc_security_group_ids = [var.sg_id]
     subnet_id = var.subnet_id
