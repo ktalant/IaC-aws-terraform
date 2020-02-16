@@ -35,6 +35,6 @@ resource "aws_instance" "talant_vm" {
       Name = "talant-vm"
     }
     key_name = aws_key_pair.talant_keypair.id
-    vpc_security_group_ids = [module.networking.aws_security_group.talant_sg_new.id]
-    subnet_id = module.networking.aws_subnet.talant_public_subnet.*.id[0]
+    vpc_security_group_ids = [var.sg_id]
+    subnet_id = var.subnet_id
   }
