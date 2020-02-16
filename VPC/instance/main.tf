@@ -31,6 +31,17 @@ resource "aws_instance" "talant_vm" {
     ami = data.aws_ami.talant_ami.id
     associate_public_ip_address = true
 
+    provisioner "file" {
+      source = "script.sh"
+      destination = "/tmp/script.sh"
+    }
+    provisioner "remote-exec" {
+      inline = [
+        "chmod +x /tmp/script.sh",
+        "/tmp/script.sh args"
+      ]
+    }
+
     tags = {
       Name = "talant-vm"
     }
