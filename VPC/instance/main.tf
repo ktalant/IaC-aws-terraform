@@ -36,7 +36,7 @@ resource "aws_instance" "talant_vm" {
       source = "script.sh"
       destination = "/tmp/script.sh"
       connection {
-        host = aws_instance.self.public_ip
+        host = self.public_ip
         type          = "ssh"
         user          = "ec2-user"
         private_key   = var.private_key
@@ -49,7 +49,7 @@ resource "aws_instance" "talant_vm" {
         "/tmp/script.sh args"
       ]
       connection {
-        host          = aws_instance.self.public_ip
+        host          = self.public_ip
         type          = "ssh"
         user          = "ec2-user"
         private_key   = var.private_key
