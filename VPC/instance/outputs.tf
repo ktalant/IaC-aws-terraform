@@ -1,3 +1,3 @@
 output "amzn-ami"{
-  value = data.aws_ami.example.id
+  value = data.aws_ami.talant_ami.id
 }
