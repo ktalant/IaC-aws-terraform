@@ -34,6 +34,13 @@ resource "aws_instance" "talant_vm" {
     provisioner "file" {
       source = "script.sh"
       destination = "/tmp/script.sh"
+      connection {
+    type          = "ssh"
+    user          = "ec2-user"
+    password      = ""
+    private_key   = var.private_key
+  }
+}
     }
     provisioner "remote-exec" {
       inline = [
